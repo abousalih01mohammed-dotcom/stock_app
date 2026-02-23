@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "594449763313",
+    "firebase_url": "https://stocklakriraa-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "stocklakriraa",
+    "storage_bucket": "stocklakriraa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594449763313:android:1c6b6153abad2166255250",
+        "android_client_info": {
+          "package_name": "com.example.stock_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl8W_tFynnA1GeZYNFH8V5XOsKFTB4zyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
