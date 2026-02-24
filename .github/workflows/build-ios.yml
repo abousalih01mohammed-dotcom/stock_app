@@ -16,22 +16,9 @@ jobs:
         with:
           channel: stable
 
-      - name: Flutter pub get
-        run: flutter pub get
-
-      - name: Clean
-        run: flutter clean
-
-      - name: Create symlink for Flutter framework (CRUCIAL)
+      - name: Generate config files and build
         run: |
-          mkdir -p ios/Flutter
-          ln -s /Users/runner/hostedtoolcache/flutter/stable-*/ios/Flutter/Flutter.framework ios/Flutter/Flutter.framework || true
-
-      - name: Build iOS (with explicit framework path)
-        run: |
-          cd ios
-          pod install
-          cd ..
+          flutter pub get
           flutter build ios --release --no-codesign
 
       - name: Create IPA
