@@ -1,7 +1,6 @@
 # Définir la version minimale iOS
 platform :ios, '14.0'
 
-# Désactiver les stats CocoaPods (plus rapide en CI)
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
 project 'Runner', {
@@ -15,16 +14,13 @@ def flutter_root
     File.join('..', 'Flutter', 'Generated.xcconfig'),
     __FILE__
   )
-
   unless File.exist?(generated_xcode_build_settings_path)
     raise "#{generated_xcode_build_settings_path} must exist. Exécute flutter pub get avant."
   end
-
   File.foreach(generated_xcode_build_settings_path) do |line|
     matches = line.match(/FLUTTER_ROOT\=(.*)/)
     return matches[1].strip if matches
   end
-
   raise "FLUTTER_ROOT non trouvé. Supprime Generated.xcconfig puis flutter pub get"
 end
 
@@ -42,7 +38,7 @@ target 'Runner' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
-# 🔧 CORRECTION DÉFINITIVE DU PROBLÈME -G (BoringSSL / Firebase)
+# CORRECTION DÉFINITIVE DU PROBLÈME -G + iOS 14 partout
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
