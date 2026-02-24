@@ -14,44 +14,37 @@ dependencies:
   # iOS style icons
   cupertino_icons: ^1.0.8
 
-  # Firebase Core
-  firebase_core: ^2.24.0
+  # 🔥 Firebase (versions stables et compatibles Xcode récent)
+  firebase_core: ^4.4.0
+  cloud_firestore: ^6.1.2
+  firebase_storage: ^13.0.6
 
-  # Cloud Firestore
-  cloud_firestore: ^4.15.0
-
-  # Firebase Storage (pour les images)
-  firebase_storage: ^11.6.5
-
-  # Image Picker pour sélectionner des photos depuis le téléphone
+  # Image Picker
   image_picker: ^1.1.1
 
-  # Provider pour la gestion d'état
-  
-  
-  # Package pour le formatage des dates et nombres
-  intl: ^0.19.0
+  # Gestion d'état
+  provider: ^6.1.2
 
-  # PACKAGES POUR DESIGN ULTRA MODERNE (sans doublons)
+  # Formatage dates / nombres
+  intl: ^0.20.2
+
+  # UI / Animations (OK)
   animations: ^2.0.11
   flutter_staggered_animations: ^1.1.0
   shimmer: ^3.0.0
   lottie: ^3.1.2
-  google_fonts: ^6.2.1
+  google_fonts: ^8.0.2
   glassmorphism: ^3.0.0
   simple_animations: ^5.0.2
   flutter_animate: ^4.5.0
   motion: ^2.0.0
   shared_preferences: ^2.2.2
-  provider: ^6.1.2
- 
-  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
