@@ -1,5 +1,5 @@
 # Définir la version minimale iOS
-platform :ios, '14.0'
+platform :ios, '15.0'
 
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
@@ -45,7 +45,7 @@ post_install do |installer|
 
     target.build_configurations.each do |config|
       # Forcer iOS 14 pour tous les pods
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
 
       # Supprimer le flag -G incompatible avec Xcode récent
       %w[OTHER_CFLAGS OTHER_SWIFT_FLAGS].each do |flag|
