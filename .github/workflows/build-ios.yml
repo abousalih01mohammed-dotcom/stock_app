@@ -22,17 +22,17 @@ jobs:
       - name: Clean
         run: flutter clean
 
-      # ÉTAPE AJOUTÉE : Nettoyage et réinstallation des pods
-      - name: Clean and reinstall pods
+      - name: Create symlink for Flutter framework (CRUCIAL)
+        run: |
+          mkdir -p ios/Flutter
+          ln -s /Users/runner/hostedtoolcache/flutter/stable-*/ios/Flutter/Flutter.framework ios/Flutter/Flutter.framework || true
+
+      - name: Build iOS (with explicit framework path)
         run: |
           cd ios
-          pod deintegrate
-          pod cache clean --all
-          pod install --repo-update
+          pod install
           cd ..
-
-      - name: Build iOS
-        run: flutter build ios --release --no-codesign
+          flutter build ios --release --no-codesign
 
       - name: Create IPA
         run: |
