@@ -33,3 +33,27 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
+
+# AJOUT CRUCIAL : Post-install pour résoudre l'erreur 'Flutter/Flutter.h' not found
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      
+      # Correction pour l'erreur Flutter/Flutter.h
+      config.build_settings['HEADER_SEARCH_PATHS'] ||= [
+        '$(inherited)',
+        '${PODS_ROOT}/../Flutter/Flutter.framework/Headers',
+        '${PODS_ROOT}/../Flutter'
+      ]
+      
+      config.build_settings['FRAMEWORK_SEARCH_PATHS'] ||= [
+        '$(inherited)',
+        '${PODS_ROOT}/../Flutter'
+      ]
+      
+      # Désactiver les warnings pour les pods (optionnel)
+      config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = 'YES'
+    end
+  end
+end
