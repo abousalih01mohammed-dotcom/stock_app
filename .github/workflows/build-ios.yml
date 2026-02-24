@@ -14,30 +14,25 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: stable
+          channel: stable
 
-      - name: Install CocoaPods
-        run: |
-          brew update
-          brew install cocoapods || true
-
-      - name: Flutter packages
+      - name: Flutter pub get
         run: flutter pub get
 
-      - name: Build iOS (no code signing)
-        run: |
-          flutter clean
-          flutter build ios --release --no-codesign
+      - name: Clean
+        run: flutter clean
 
-      - name: Create unsigned IPA
-        run: |
-          mkdir -p build/ios/ipa_payload
-          cp -R build/ios/iphoneos/Runner.app build/ios/ipa_payload/
-          cd build/ios
-          zip -r unsigned.ipa ipa_payload
+      - name: Build iOS
+        run: flutter build ios --release --no-codesign
 
-      - name: Upload artifact
+      - name: Create IPA
+        run: |
+          mkdir -p Payload
+          cp -r build/ios/iphoneos/Runner.app Payload/
+          zip -r stock_app.ipa Payload
+
+      - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
-          name: unsigned-ipa
-          path: build/ios/unsigned.ipa
+          name: stock_app-ios
+          path: stock_app.ipa
